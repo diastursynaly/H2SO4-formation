@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="kk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Контакт әдісі: H₂SO₄ өндірісінің анимациялық сызбасы</title>
+<style>
+:root{--bg:#f4f1ea;--fg:#0f1b2d;--vs:#dde4ec;--st:#3b5575;--pp:#b8c3cf;--ac:#d97706;--mu:#4a5b70;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1522;--fg:#e8eef5;--vs:#16273d;--st:#4b6a8f;--pp:#26394f;--ac:#f5a524;--mu:#9fb3c8}}
+:root[data-theme="dark"]{--bg:#0b1522;--fg:#e8eef5;--vs:#16273d;--st:#4b6a8f;--pp:#26394f;--ac:#f5a524;--mu:#9fb3c8}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Arial,Helvetica,sans-serif}
+body{margin:0}#app{box-sizing:border-box;height:100vh;height:100dvh;display:flex;flex-direction:column;gap:8px;padding:14px 16px}
+
+#st{font-size:clamp(22px,3vw,40px);font-weight:700}
+#eq{font-size:clamp(20px,3vw,42px);font-weight:700;color:var(--ac);margin:4px 0}
+#ds{font-size:clamp(14px,1.6vw,24px);color:var(--mu);max-width:1500px}
+#stage{flex:1;min-height:0;display:flex}#stage svg.p{width:100%;height:100%}
+.v{opacity:.3;transition:opacity .6s}.v.on,.v.done{opacity:1}
+.v rect.b{fill:var(--vs);stroke:var(--st);stroke-width:4}
+.v.on rect.b{stroke:var(--ac);stroke-width:6;filter:drop-shadow(0 0 14px var(--ac))}
+.v:not(.on):not(.done) .in{display:none}
+.seg{opacity:0;transition:opacity .6s}.seg.on{opacity:1}
+.ln{stroke:var(--st);stroke-width:1.5;fill:none}
+text{fill:var(--fg);font-size:24px;text-anchor:middle}
+.sm{font-size:22px;fill:var(--ac);font-weight:700}
+@keyframes mv{0%{transform:translateY(0);opacity:0}12%{opacity:1}88%{opacity:1}100%{transform:translateY(var(--h));opacity:0}}
+@keyframes cat{0%{transform:translateY(0);fill:#f5a524;opacity:0}10%{opacity:1}45%{fill:#f5a524}60%{fill:#38bdf8}90%{opacity:1}100%{transform:translateY(var(--h));fill:#38bdf8;opacity:0}}
+.in circle{animation:mv 3s linear infinite}
+.in circle.c{animation-name:cat}
+#lv{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);transition:transform 6s ease-in-out}
+#lv.on{transform:scaleY(.85)}
+nav{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
+button{font-size:clamp(14px,3.6vw,20px);white-space:nowrap;padding:6px 12px;border-radius:10px;border:2px solid var(--st);background:var(--vs);color:var(--fg);cursor:pointer}
+.dt{width:14px;height:14px;border-radius:50%;background:var(--pp);border:2px solid var(--st)}.dt.on{background:var(--ac)}
+.p text{fill:#1f2a37;font-size:21px}.p tspan{fill:#1f2a37}.v.on{filter:drop-shadow(0 0 10px #f59e0b)}#by{align-self:center;font-size:clamp(16px,2vw,26px);font-weight:700;letter-spacing:.06em;color:var(--ac);border:2px solid var(--ac);border-radius:999px;padding:4px 20px}.p text{fill:#e3eefb;font-size:21px;font-weight:600}.p tspan{fill:#e3eefb}
+svg.p{animation:fi .9s ease both;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+@keyframes fi{from{opacity:0;transform:scale(.97)}}
+@keyframes pl{50%{filter:drop-shadow(0 0 24px #fbbf24)}}.v.on{animation:pl 2s ease-in-out infinite}
+@keyframes fl{50%{opacity:.65}}.bed{animation:fl 1.1s ease-in-out infinite}
+@keyframes dsh{to{stroke-dashoffset:-36}}.sp{animation:dsh .8s linear infinite}
+.seg{filter:url(#gl)}
+#cap{background:var(--vs);border:1px solid var(--st);border-radius:14px;padding:10px 20px}
+#st{background:linear-gradient(90deg,var(--fg),var(--ac));-webkit-background-clip:text;background-clip:text;color:transparent}
+#eq{text-shadow:0 0 18px var(--ac)}
+.dt{width:16px;height:16px;transition:.4s}.dt.on{box-shadow:0 0 12px var(--ac);transform:scale(1.35)}
+body.fs #app{position:fixed;inset:0;z-index:9;background:var(--bg);padding:6px 10px;gap:4px}
+body.fs #ds{display:none}body.fs #cap{padding:4px 12px}body.fs #st{font-size:18px}body.fs #eq{font-size:20px;margin:0}body.fs #by{font-size:12px;padding:1px 12px}
+@media (orientation:portrait){body.fs #app{inset:auto;top:0;left:100%;width:100vh;width:100dvh;height:100vw;height:100dvw;transform-origin:0 0;transform:rotate(90deg)}}
+#tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}#tabs button.on{background:var(--ac);color:#0b1522;border-color:var(--ac);font-weight:700}
+#eqs{display:none;flex:1;min-height:0;overflow:auto;flex-direction:column;gap:10px;padding-bottom:8px}
+body.eqm #eqs{display:flex}body.eqm #cap,body.eqm #stage,body.eqm nav{display:none}
+#eh{font-size:clamp(20px,3vw,32px);font-weight:700;color:var(--ac);text-align:center}#eh small{font-size:.5em;color:var(--mu);margin-left:8px}
+#rc{width:100%;height:clamp(170px,34vh,320px);flex:none;border-radius:14px;background:#07121f;border:1px solid var(--st)}
+#lg{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;font-size:14px}#lg i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+#res{display:flex;align-items:center;gap:14px;background:var(--vs);border:1px solid var(--st);border-radius:14px;padding:10px 16px}
+#al{font-size:clamp(28px,6vw,48px);font-weight:700;line-height:1}#bar{flex:1;height:18px;border-radius:9px;background:var(--pp);overflow:hidden}#bf{display:block;height:100%;width:0;transition:width .5s,background .5s}
+#sl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px 18px}#sl label{display:flex;flex-direction:column;gap:2px;font-size:15px}#sl label span{display:flex;justify-content:space-between}#sl b{color:var(--ac)}
+input[type=range]{width:100%;accent-color:var(--ac)}.ck{font-size:15px}.mu{color:var(--mu);font-size:13px}#pr{display:flex;flex-wrap:wrap;gap:8px}
+#hn{background:var(--vs);border-left:4px solid var(--ac);border-radius:8px;padding:8px 12px;font-size:15px}
+#ch{width:100%;max-width:640px;align-self:center;background:#07121f;border-radius:12px;flex:none}#ch text{font-size:9px;fill:#9fb3c8;font-weight:400}
+</style></head><body><svg width="0" height="0" style="position:absolute;width:0;height:0" aria-hidden="true"><defs><linearGradient id="hot" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8a4c"/><stop offset=".55" stop-color="#ff4b2b"/><stop offset="1" stop-color="#b91c1c"/></linearGradient><linearGradient id="wl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#f59e0b"/></linearGradient><linearGradient id="mt" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f1f5f9"/><stop offset=".5" stop-color="#94a3b8"/><stop offset="1" stop-color="#cbd5e1"/></linearGradient><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12345a"/><stop offset="1" stop-color="#07121f"/></linearGradient><pattern id="gr" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#5b9bd5" stroke-opacity=".1"/></pattern><filter id="gl" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs></svg>
+<div id="app"><div id="by">Made by Dias Sempai</div><div id="tabs"><button id="t1" class="on">Өндіріс процесі</button><button id="t2">Тепе-теңдік</button><button id="fs">⛶ Толық экран</button></div><div id="cap"><div id="st"></div><div id="eq"></div><div id="ds"></div></div>
+<div id="eqs"><div id="eh">2SO₂ + O₂ ⇌ 2SO₃ + Q<small>ΔH = −198 кДж</small></div><canvas id="rc"></canvas>
+<div id="lg"><span><i style="background:#fbbf24"></i>SO₂</span><span><i style="background:#f87171"></i>O₂</span><span><i style="background:#38bdf8"></i>SO₃</span><span><i style="background:#94a3b8"></i>N₂</span></div>
+<div id="res"><div><div id="al">0%</div><div class="mu">SO₂ айналу дәрежесі</div></div><div id="bar"><i id="bf"></i></div></div>
+<div id="sl"><label><span>Температура<b id="vT"></b></span><input type="range" id="sT" min="300" max="800" step="5" value="450"></label><label><span>Қысым<b id="vP"></b></span><input type="range" id="sP" min="0" max="100" step="1" value="0"></label><label><span>SO₂ концентрациясы<b id="vA"></b></span><input type="range" id="sA" min="1" max="20" step="1" value="7"></label><label><span>O₂ концентрациясы<b id="vB"></b></span><input type="range" id="sB" min="1" max="30" step="1" value="11"></label></div>
+<label class="ck"><input type="checkbox" id="ct" checked> V₂O₅ катализаторы <span class="mu" id="rt"></span></label><div id="pr"></div>
+<div id="hn">Жүгірткілерді жылжытып көріңіз: тепе-теңдіктің қалай ығысатынын көресіз. Катализатор тепе-теңдікті ығыстырмайды, тек жылдамдатады.</div><svg id="ch" viewBox="0 0 320 140"></svg></div>
+<div id="stage"><svg id="sa" class="p" viewBox="0 40 1080 560" role="img" aria-label="I сатының сызбасы: пеш, циклон, электрсүзгі"><rect x="0" y="40" width="1080" height="560" rx="16" fill="url(#bg)"/><rect x="0" y="40" width="1080" height="560" rx="16" fill="url(#gr)"/><g id="sap"></g>
+<path d="M118 255H186L162 295H142Z" fill="#1e4a78"/><circle cx="120" cy="505" r="38" fill="#1b3a5c" stroke="#5b9bd5" stroke-width="3"/><g><animateTransform attributeName="transform" type="rotate" from="0 120 505" to="360 120 505" dur="1.2s" repeatCount="indefinite"/><path d="M120 485V525M100 505H140M106 491L134 519M134 491L106 519" stroke="#7fb3e6" stroke-width="4"/></g>
+<text x="105" y="162">Күкірт<tspan x="105" dy="24">колчеданы</tspan></text><text x="105" y="392">Ауа</text><text x="205" y="415">Су</text><text x="445" y="190">Пеш газы</text><text x="428" y="552">Күйінді</text><text x="320" y="112">Қайнаған қабаттағы<tspan x="320" dy="24">күйдіру пеші</tspan></text><text x="528" y="128">Циклон</text><text x="800" y="128">Электрсүзгі</text><text x="596" y="500">Шаң</text><text x="873" y="500">Шаң</text>
+<g class="v" data-s="0"><path d="M236 400V300L254 255V218Q254 192 290 190H340Q376 192 376 218V255L394 300V400Z" fill="url(#hot)" stroke="url(#wl)" stroke-width="7"/><ellipse cx="318" cy="354" rx="72" ry="30" fill="#ffd166" opacity=".35" class="bed"/><rect x="262" y="332" width="112" height="44" fill="#e6402b" class="bed"/><rect x="250" y="376" width="136" height="20" fill="url(#mt)"/><path d="M255 396H381L346 452H290Z" fill="url(#mt)"/><rect x="262" y="452" width="14" height="55" fill="url(#mt)"/><rect x="360" y="452" width="14" height="55" fill="url(#mt)"/><rect x="238" y="505" width="150" height="14" rx="7" fill="url(#mt)"/><g class="in" id="i0"></g></g>
+<g class="v" data-s="1"><path d="M476 272H574V382L546 462H504L476 382Z" fill="url(#hot)" stroke="url(#wl)" stroke-width="7"/><rect x="512" y="272" width="26" height="112" fill="#1e4a78"/><path d="M488 310Q525 295 562 315Q525 335 488 345Q525 360 562 365" fill="none" stroke="#ffe08a" stroke-width="4" stroke-dasharray="10 8" class="sp"/><rect x="506" y="462" width="38" height="26" fill="url(#mt)"/><rect x="470" y="505" width="110" height="14" rx="7" fill="url(#mt)"/><g class="in" id="i1"></g></g>
+<g class="v" data-s="2"><rect x="712" y="175" width="198" height="240" rx="6" fill="#5b7a99"/><rect x="724" y="192" width="174" height="196" fill="url(#hot)" stroke="url(#wl)" stroke-width="7"/><rect x="808" y="188" width="10" height="100" fill="url(#mt)"/><path d="M788 262H848M792 262V336M802 262V336M812 262V336M822 262V336M832 262V336M842 262V336" stroke="#a5f3fc" stroke-width="3" class="bed"/><path d="M724 388H898L846 478H776Z" fill="url(#hot)" stroke="url(#wl)" stroke-width="7"/><rect x="782" y="478" width="58" height="16" fill="url(#mt)"/><rect x="700" y="512" width="230" height="14" rx="7" fill="url(#mt)"/><g class="in" id="i2"></g></g>
+<g id="saf"></g></svg>
+<svg id="sb" class="p" style="display:none" viewBox="0 40 1080 460" role="img" aria-label="II және III сатылардың сызбасы: кептіру, контакт аппараты, сіңіру"><rect x="0" y="40" width="1080" height="460" rx="16" fill="url(#bg)"/><rect x="0" y="40" width="1080" height="560" rx="16" fill="url(#gr)"/><g id="sbp"></g>
+<text x="250" y="62">Кептіру<tspan x="250" dy="24">мұнарасы</tspan></text><text x="420" y="62">Жылу-<tspan x="420" dy="24">алмастырғыш</tspan></text><text x="595" y="62">Контакт<tspan x="595" dy="24">аппараты</tspan></text><text x="802" y="62">Сіңіру<tspan x="802" dy="24">мұнарасы</tspan></text><text x="95" y="130">Концентрлі<tspan x="95" dy="22">күкірт</tspan><tspan x="95" dy="22">қышқылы</tspan></text><text x="95" y="405">Пеш газы</text><text x="355" y="138">Тазартылған газ</text><text x="498" y="270">Қыздырылған газ</text><text x="345" y="440">Күкірт қышқылы</text><text x="560" y="440">Контакт аппаратының<tspan x="560" dy="22">газы</tspan></text><text x="990" y="340">Күкірт қышқылы</text><text x="940" y="205">Газ</text>
+<g class="v" data-s="3"><path d="M192 410V190Q192 152 230 152H265Q303 152 303 190V410Z" fill="url(#hot)" stroke="url(#wl)" stroke-width="7"/><rect x="202" y="235" width="92" height="120" fill="url(#mt)"/><rect x="215" y="205" width="40" height="10" fill="#5b7a99"/><rect x="175" y="408" width="145" height="14" rx="7" fill="url(#mt)"/><g class="in" id="i3"></g></g>
+<g class="v" data-s="4"><path d="M378 410V268Q378 242 405 242H440Q467 242 467 268V410Z" fill="url(#hot)" stroke="url(#wl)" stroke-width="7"/><rect x="385" y="290" width="76" height="6" fill="#fff"/><rect x="385" y="372" width="76" height="6" fill="#fff"/><path d="M396 296V372M410 296V372M424 296V372M438 296V372M452 296V372" stroke="#c9c9d1" stroke-width="8"/><rect x="362" y="408" width="120" height="14" rx="7" fill="url(#mt)"/></g>
+<g class="v" data-s="4"><path d="M530 410V222Q530 190 565 190H625Q660 190 660 222V410Z" fill="url(#hot)" stroke="url(#wl)" stroke-width="7"/><g fill="#c99a3b" class="bed"><rect x="540" y="235" width="110" height="12"/><rect x="540" y="285" width="110" height="12"/><rect x="540" y="335" width="110" height="12"/><rect x="540" y="380" width="110" height="12"/></g><rect x="515" y="408" width="160" height="14" rx="7" fill="url(#mt)"/><g class="in" id="i4"></g></g>
+<g class="v" data-s="5"><path d="M748 410V190Q748 152 786 152H822Q860 152 860 190V410Z" fill="url(#hot)" stroke="url(#wl)" stroke-width="7"/><rect x="758" y="235" width="92" height="120" fill="url(#mt)"/><rect x="790" y="205" width="40" height="10" fill="#5b7a99"/><rect x="730" y="408" width="145" height="14" rx="7" fill="url(#mt)"/><g class="in" id="i5"></g></g>
+<g id="sbf"></g></svg></div>
+<nav><button id="pv" aria-label="Артқа">◀</button><button id="pl">❚❚ Үзіліс</button><button id="sn">🔇 Дыбыс</button><button id="nx" aria-label="Алға">▶</button><span id="dots" style="display:flex;gap:8px"></span></nav></div>
+<script>
+var NS='http://www.w3.org/2000/svg',$=function(s){return document.querySelector(s)};
+function E(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+var S=[
+['1. Қайнаған қабатты күйдіру пеші','4FeS₂ + 11O₂ → 2Fe₂O₃ + 8SO₂','Ұсақталған колчедан пешке түседі, төменнен ауа үрлегіш арқылы ауа беріледі. Бөлшектер ауа ағынында «қайнайды», құрамында SO₂ бар пеш газы түзіледі. Күйінді Fe₂O₃ төмен түседі.'],
+['2. Циклон','газды ірі шаңнан тазалау','Газ циклонда айналып ағады: ауыр шаң қабырғаларға лақтырылып, бункерге түседі.'],
+['3. Электрсүзгі','газды ұсақ шаңнан тазалау','Ұсақ шаң зарядталып, электродтарға тұнады, содан кейін оны шығарып алады.'],
+['4. Кептіру мұнарасы','газды концентрлі H₂SO₄-пен кептіру','Газ насадка арқылы жоғары көтеріледі, оған қарсы концентрлі күкірт қышқылы ағып түсіп, ылғалды сіңіреді.'],
+['5. Жылуалмастырғыш және контакт аппараты','2SO₂ + O₂ ⇌ 2SO₃ + Q','Жылуалмастырғыш газды реакция жылуымен қыздырады. Контакт аппаратында V₂O₅ катализаторының қабаттарында SO₂ SO₃-ке дейін тотығады, содан кейін газ жылуалмастырғышқа қайта оралады.'],
+['6. Сіңіру мұнарасы','SO₃ + H₂O → H₂SO₄ (олеум арқылы)','SO₃ насадка арқылы көтеріліп, оған қарсы келе жатқан күкірт қышқылына сіңеді. Дайын қышқыл төменнен шығарылады.']];
+var T='M525 237V200Q525 185 545 185H575Q600 185 600 210V300Q600 310 620 310H650Q670 310 670 285V265Q670 250 690 250H715';
+var F=[[0,'sa','M152 215V325Q152 345 175 345H250','#e0b070',4,1.8],[0,'sa','M150 505H320V448','#bae6fd',4,1.6],[0,'sa','M200 385H258','#38bdf8',2,1.2],[0,'sa','M320 452V528','#cbd5e1',3,1.5],[1,'sa','M385 237H525','#fbbf24',3,1.2],[1,'sa','M525 465V505','#cbd5e1',2,1.2],[2,'sa',T,'#fbbf24',6,3],[2,'sa','M835 478V510','#cbd5e1',2,1.2],[2,'sa','M890 340H935Q960 340 960 320V270Q960 255 980 255H1050','#fbbf24',4,2],
+[3,'sb','M138 215V372H200','#fbbf24',4,2],[3,'sb','M140 188H232V215','#4ade80',3,1.4],[3,'sb','M300 205H335Q350 205 350 225V258H380','#fbbf24',3,1.4],[3,'sb','M300 388H345','#4ade80',2,1.2],[4,'sb','M465 332H505Q522 332 522 315V195Q522 175 545 175H590Q600 175 600 195V215','#fbbf24',5,2.4],[4,'sb','M590 398H470','#38bdf8',3,1.4],[5,'sb','M420 245V108H705V365Q705 385 725 385H748','#38bdf8',8,4],[5,'sb','M948 355H930Q915 355 915 340V112Q915 100 900 100H830Q808 100 808 118V205','#4ade80',6,3],[5,'sb','M862 182H895','#94a3b8',2,1],[5,'sb','M880 410V452','#4ade80',3,1.4]];
+var segs=[];
+F.forEach(function(f,i){E('path',{d:f[2],stroke:'#5b9bd5','stroke-width':28,fill:'none',opacity:.6},$('#'+f[1]+'p'));E('path',{id:'p'+i,d:f[2],stroke:'#0c2b49','stroke-width':22,fill:'none'},$('#'+f[1]+'p'));
+ var g=E('g',{'class':'seg','data-s':f[0]},$('#'+f[1]+'f'));segs.push(g);
+ for(var j=0;j<f[4];j++){var c=E('circle',{r:6,fill:f[3]},g),a=E('animateMotion',{dur:f[5]+'s',begin:'-'+(j*f[5]/f[4]).toFixed(2)+'s',repeatCount:'indefinite'},c);E('mpath',{href:'#p'+i},a)}});
+function inner(id,n,x0,x1,y0,h,r,col,cls,dur){var g=$('#'+id);for(var i=0;i<n;i++){var c=E('circle',{cx:x0+Math.random()*(x1-x0),cy:y0,r:r,fill:col,'class':cls||''},g);c.style.setProperty('--h',h+'px');c.style.animationDuration=dur+'s';c.style.animationDelay='-'+(Math.random()*dur).toFixed(2)+'s'}}
+inner('i0',10,270,366,372,-45,5,'#ffd0a8','',1.6);inner('i0',8,270,366,325,-110,3,'#fbbf24','',2.4);
+inner('i1',10,485,565,300,150,3,'#e5e7eb','',2.2);inner('i2',14,735,885,215,170,3,'#e5e7eb','',2.6);
+inner('i3',14,206,290,215,130,3,'#fff','',2);inner('i3',8,205,290,400,-45,3,'#fbbf24','',1.6);
+inner('i4',16,545,645,205,185,4,'#f5a524','c',3.2);
+inner('i5',14,762,846,215,130,3,'#fff','',2);inner('i5',8,760,846,400,-45,3,'#fbbf24','',1.6);
+var cur=0,play=true,tm;
+var dots=$('#dots');S.forEach(function(){var d=document.createElement('span');d.className='dt';dots.appendChild(d)});
+function show(n){cur=(n+S.length)%S.length;
+ $('#st').textContent=S[cur][0];$('#eq').textContent=S[cur][1];$('#ds').textContent=S[cur][2];
+ document.querySelectorAll('.v').forEach(function(v){var s=+v.dataset.s;v.classList.toggle('on',s==cur);v.classList.toggle('done',s<cur)});
+ segs.forEach(function(g,i){g.classList.toggle('on',F[i][0]<=cur)});
+ $('#sa').style.display=cur<3?'':'none';$('#sb').style.display=cur<3?'none':'';
+ document.querySelectorAll('.dt').forEach(function(d,i){d.classList.toggle('on',i==cur)});if(window.snd)snd(cur)}
+function tick(){clearTimeout(tm);if(play)tm=setTimeout(function(){show(cur+1);tick()},cur==S.length-1?9000:7000)}
+$('#pv').onclick=function(){show(cur-1);tick()};
+$('#nx').onclick=function(){show(cur+1);tick()};
+$('#pl').onclick=function(){play=!play;this.textContent=play?'❚❚ Үзіліс':'▶ Ойнату';tick()};
+document.addEventListener('keydown',function(e){if(e.key=='ArrowRight')$('#nx').click();if(e.key=='ArrowLeft')$('#pv').click();if(e.key==' '){e.preventDefault();$('#pl').click()}});
+var AC=null,NB,mix,L=[],snOn=false,last=-1;
+function lfo(r,d,p){var o=AC.createOscillator(),g=AC.createGain();o.frequency.value=r;g.gain.value=d;o.connect(g);g.connect(p);o.start()}
+function ch(src,fl,lr,ld,base){var mod=AC.createGain(),lv=AC.createGain();mod.gain.value=1;lv.gain.value=0;if(fl){src.connect(fl);fl.connect(mod)}else src.connect(mod);mod.connect(lv);lv.connect(mix);if(lr)lfo(lr,ld,mod.gain);return{g:lv,base:base}}
+function nz(type,f,q){var s=AC.createBufferSource();s.buffer=NB;s.loop=true;var fl=AC.createBiquadFilter();fl.type=type;fl.frequency.value=f;fl.Q.value=q||1;s.start();return{s:s,f:fl}}
+function os(type,f){var o=AC.createOscillator();o.type=type;o.frequency.value=f;o.start();return o}
+function build(){AC=new(window.AudioContext||window.webkitAudioContext)();NB=AC.createBuffer(1,AC.sampleRate*2,AC.sampleRate);var d=NB.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;
+ mix=AC.createGain();mix.gain.value=0;mix.connect(AC.destination);
+ var a=nz('lowpass',380);L[0]=[ch(a.s,a.f,5,.25,.5)];
+ var b=nz('bandpass',900,2);L[1]=[ch(os('square',50),null,9,.5,.03),ch(b.s,b.f,13,.6,.05)];
+ var c=nz('highpass',4500,.7);L[2]=[ch(c.s,c.f,0,0,.12)];
+ L[3]=[ch(os('sine',110),null,.4,.08,.12),ch(os('sine',165),null,.3,.1,.07)];
+ L[4]=[];
+ var e=nz('bandpass',1300,1.5);lfo(3,350,e.f.frequency);L[5]=[ch(e.s,e.f,6,.3,.28)];
+ setInterval(function(){if(snOn&&cur>=5)blip()},170)}
+function blip(){var o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime,f=220+Math.random()*420;o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(f*1.9,t+.09);g.gain.setValueAtTime(.001,t);g.gain.exponentialRampToValueAtTime(.12,t+.015);g.gain.exponentialRampToValueAtTime(.001,t+.11);o.connect(g);g.connect(mix);o.start(t);o.stop(t+.14)}
+function ding(){var t=AC.currentTime;[660,990].forEach(function(f,i){var o=AC.createOscillator(),g=AC.createGain();o.frequency.value=f;g.gain.setValueAtTime(.001,t);g.gain.exponentialRampToValueAtTime(.25/(i+1),t+.02);g.gain.exponentialRampToValueAtTime(.001,t+1.2);o.connect(g);g.connect(mix);o.start(t);o.stop(t+1.3)})}
+function snd(n){if(!AC||!snOn)return;var t=AC.currentTime,M=[[0],[2],[1],[2],[3],[4,5]],lv=[0,0,0,0,0,0];M.forEach(function(a,i){if(i>n)return;a.forEach(function(l){lv[l]=Math.max(lv[l],i==n?1:.3)})});L.forEach(function(arr,i){arr.forEach(function(x){x.g.gain.setTargetAtTime(x.base*lv[i],t,.4)})});if(n!=last){ding();last=n}}
+$('#sn').onclick=function(){if(!AC)build();if(AC.state=='suspended')AC.resume();snOn=!snOn;mix.gain.setTargetAtTime(snOn?.7:0,AC.currentTime,.15);this.textContent=snOn?'🔊 Дыбыс':'🔇 Дыбыс';if(snOn){last=-1;snd(cur)}};
+var cv=$('#rc'),cx=cv.getContext('2d'),ew=0,eh=0,Q={T:450,P:0,A:7,B:11},pts=[],fl=[],ev=0,al=0,lt=0,KK=1.2,py=0;
+function Pa(){return Math.pow(10,Q.P/50)}
+function eqA(T,P,a,b){var K=Math.exp(23815/(T+273.15)-22.6),lo=0,hi=Math.min(.99999,2*b/a*.99999);for(var i=0;i<60;i++){var m=(lo+hi)/2,s2=a*(1-m),o2=b-a*m/2,s3=a*m,nt=100-a*m/2;if(s3*s3*nt/(s2*s2*o2*P)>K)hi=m;else lo=m}return (lo+hi)/2}
+function bnd(){var f=1-.65*Q.P/100;return{l:16,r:16+(ew-50-16)*f-8,t:16,b:eh-16}}
+function mk(t){var b=bnd();return{t:t,x:b.l+Math.random()*(b.r-b.l),y:b.t+Math.random()*(b.b-b.t),d:Math.random()*6.283,a:Math.random()*6.283}}
+function init(){pts=[];[[0,Q.A],[1,Q.B],[3,100-Q.A-Q.B]].forEach(function(z){for(var i=Math.round(z[1]*KK);i>0;i--)pts.push(mk(z[0]))})}
+function rs(){ew=cv.clientWidth;eh=cv.clientHeight;var d=window.devicePixelRatio||1;cv.width=ew*d;cv.height=eh*d;cx.setTransform(d,0,0,d,0,0);if(!pts.length&&ew)init()}
+function idx(t){var r=[];for(var i=0;i<pts.length;i++)if(pts[i].t==t)r.push(i);return r}
+function pick(a){return a.splice(Math.floor(Math.random()*a.length),1)[0]}
+function fwd(){var s=idx(0),o=idx(1);if(s.length<2||!o.length)return;var a=pick(s),b=pick(s),c=pick(o);pts[a].t=2;pts[b].t=2;fl.push({x:pts[a].x,y:pts[a].y,l:1,c:'#38bdf8'});pts.splice(c,1)}
+function rev(){var s=idx(2);if(s.length<2)return;var a=pick(s),b=pick(s);pts[a].t=0;pts[b].t=0;var p=mk(1);p.x=pts[a].x;p.y=pts[a].y;pts.push(p);fl.push({x:p.x,y:p.y,l:1,c:'#fbbf24'})}
+function dot(x,y,r,c){cx.fillStyle=c;cx.beginPath();cx.arc(x,y,r,0,6.283);cx.fill()}
+function dm(p){var a=p.a,C=Math.cos,S=Math.sin,sc=Math.max(.7,Math.min(1.2,ew/500));cx.save();cx.translate(p.x,p.y);cx.scale(sc,sc);
+ if(p.t==0){dot(0,0,6,'#fbbf24');dot(8*C(a+.9),8*S(a+.9),4,'#f87171');dot(8*C(a-.9),8*S(a-.9),4,'#f87171')}
+ else if(p.t==1){dot(4.5*C(a),4.5*S(a),4,'#f87171');dot(-4.5*C(a),-4.5*S(a),4,'#f87171')}
+ else if(p.t==2){dot(0,0,7,'#38bdf8');for(var k=0;k<3;k++)dot(9*C(a+k*2.094),9*S(a+k*2.094),4,'#f87171')}
+ else{dot(3.5*C(a),3.5*S(a),3,'#94a3b8');dot(-3.5*C(a),-3.5*S(a),3,'#94a3b8')}cx.restore()}
+function frame(t){requestAnimationFrame(frame);var dt=Math.min(.05,(t-lt)/1000||0);lt=t;if(!document.body.classList.contains('eqm')||!ew)return;
+ var T=Q.T+273.15,kin=Math.min(6,Math.exp(-10826*(1/T-1/723.15))),rate=Math.max(.5,Math.min(30,($('#ct').checked?14:1.2)*kin)),sp=55*Math.sqrt(T/723.15),b=bnd(),tg=Q.A*KK*al,h=(Q.T-300)/500;
+ ev+=rate*dt;while(ev>=1){ev--;var c3=idx(2).length,g=c3<tg-1?1:c3>tg+1?-1:(Math.random()<.5?1:-1);if(g>0)fwd();else rev()}
+ cx.clearRect(0,0,ew,eh);cx.fillStyle='rgb('+(10+80*h|0)+',22,'+(48-30*h|0)+')';var px=b.r+8;cx.fillRect(8,8,px-8,eh-16);cx.strokeStyle='#5b9bd5';cx.lineWidth=3;cx.strokeRect(8,8,px-8,eh-16);
+ cx.fillStyle='#94a3b8';cx.fillRect(px,8,10,eh-16);cx.fillRect(px+10,eh/2-4,ew-px-20,8);cx.fillRect(ew-14,eh/2-16,8,32);
+ var n=[0,0,0,0];pts.forEach(function(p){n[p.t]++;p.x+=Math.cos(p.d)*sp*dt;p.y+=Math.sin(p.d)*sp*dt;p.a+=dt*1.5;if(p.x<b.l){p.x=b.l;p.d=Math.PI-p.d}if(p.x>b.r){p.x=b.r;p.d=Math.PI-p.d}if(p.y<b.t){p.y=b.t;p.d=-p.d}if(p.y>b.b){p.y=b.b;p.d=-p.d}dm(p)});
+ fl.forEach(function(f){f.l-=dt*2;cx.strokeStyle=f.c;cx.globalAlpha=Math.max(0,f.l);cx.lineWidth=2;cx.beginPath();cx.arc(f.x,f.y,(1-f.l)*22+6,0,6.283);cx.stroke()});cx.globalAlpha=1;fl=fl.filter(function(f){return f.l>0});
+ cx.fillStyle='#e3eefb';cx.font='600 13px Arial';cx.textAlign='left';cx.fillText('T = '+Q.T+' °C   P = '+(Pa()<10?Pa().toFixed(1):Math.round(Pa()))+' атм',16,28);
+ ['SO₂','O₂','SO₃','N₂'].forEach(function(l,i){}); $('#lg').dataset.n=n.join(',');
+ var sp2=document.querySelectorAll('#lg span');['SO₂','O₂','SO₃','N₂'].forEach(function(l,i){sp2[i].lastChild.textContent=l+' '+n[i]})}
+function cht(){var P=Pa(),X=function(T){return 36+(T-300)/500*274},Y=function(v){return 110-v};var s='<rect x="'+X(400)+'" y="10" width="'+(X(500)-X(400))+'" height="100" fill="#fbbf24" opacity=".15"/>';
+ for(var v=0;v<=100;v+=50)s+='<path d="M36 '+Y(v)+'H310" stroke="#1d3b5c"/><text x="30" y="'+(Y(v)+3)+'" text-anchor="end">'+v+'</text>';
+ for(var T=300;T<=800;T+=100)s+='<text x="'+X(T)+'" y="123" text-anchor="middle">'+T+'</text>';
+ var d='';for(T=300;T<=800;T+=10)d+=(T>300?'L':'M')+X(T).toFixed(1)+' '+Y(100*eqA(T,P,Q.A,Q.B)).toFixed(1);
+ s+='<path d="'+d+'" fill="none" stroke="#38bdf8" stroke-width="2.5"/><path d="M'+X(Q.T)+' 10V110" stroke="#fbbf24" stroke-dasharray="3 3"/><circle cx="'+X(Q.T)+'" cy="'+Y(al*100)+'" r="5" fill="#fbbf24"/><text x="173" y="136" text-anchor="middle">T, °C  (сары аймақ: өндірістік 400–500 °C)</text><text x="6" y="8">%</text>';$('#ch').innerHTML=s}
+var HN={T:['Температура көтерілді: реакция экзотермиялық (ΔH < 0), сондықтан тепе-теңдік солға ығысады, SO₃ шығымы азаяды. Бірақ жылдамдық артады.','Температура төмендеді: тепе-теңдік оңға ығысады, шығым артады. Бірақ реакция баяулайды, сондықтан өндірісте 400–500 °C және катализатор қолданылады.'],P:['Қысым артты: оң жақта газ молекулалары аз (3 → 2), сондықтан тепе-теңдік оңға ығысады.','Қысым төмендеді: тепе-теңдік молекулалар көп жаққа, яғни солға ығысады.'],A:['SO₂ концентрациясы артты: тепе-теңдік оңға ығысады, SO₃ көбірек түзіледі, бірақ O₂ жетпей, айналу дәрежесі төмендеуі мүмкін.','SO₂ азайды: SO₃ аз түзіледі, ал айналу дәрежесі артуы мүмкін.'],B:['O₂ концентрациясы артты: тепе-теңдік оңға ығысады, SO₂ толығырақ SO₃-ке айналады. Сондықтан оттегі артық алынады.','O₂ азайды: тепе-теңдік солға ығысады, шығым төмендейді.']};
+function upd(k,dir,txt){var P=Pa(),y0=py;al=eqA(Q.T,P,Q.A,Q.B);var y=al*100;py=y;
+ $('#vT').textContent=Q.T+' °C';$('#vP').textContent=(P<10?P.toFixed(1):Math.round(P))+' атм';$('#vA').textContent=Q.A+' %';$('#vB').textContent=Q.B+' %';
+ $('#al').textContent=y.toFixed(1)+'%';$('#bf').style.width=y+'%';$('#bf').style.background=y>90?'#4ade80':y>50?'#fbbf24':'#f87171';
+ var kin=Math.exp(-10826*(1/(Q.T+273.15)-1/723.15));$('#rt').textContent='· жылдамдық: '+(kin<.3?'төмен':kin<2?'орташа':'жоғары');
+ if(k)$('#hn').textContent=HN[k][dir=='u'?0:1]+' Шығым: '+y0.toFixed(1)+'% → '+y.toFixed(1)+'%.';else if(txt)$('#hn').textContent=txt;cht()}
+['T','P','A','B'].forEach(function(k){$('#s'+k).oninput=function(){var o=Q[k];Q[k]=+this.value;if(k=='A'||k=='B')init();upd(k,Q[k]>o?'u':'d')}});
+[['Өнеркәсіптік',450,0,7,11],['Тым ыстық',700,0,7,11],['600 °C, 50 атм',600,85,7,11]].forEach(function(z){var bt=document.createElement('button');bt.textContent=z[0];bt.onclick=function(){Q={T:z[1],P:z[2],A:z[3],B:z[4]};['T','P','A','B'].forEach(function(k){$('#s'+k).value=Q[k]});init();upd(0,0,'Режим: '+z[0]+'. Тепе-теңдіктегі шығымды бақылаңыз.')};$('#pr').appendChild(bt)});
+function tab(n){document.body.classList.toggle('eqm',n==2);$('#t1').classList.toggle('on',n==1);$('#t2').classList.toggle('on',n==2);
+ if(n==2){clearTimeout(tm);if(AC&&snOn)mix.gain.setTargetAtTime(0,AC.currentTime,.1);rs()}else{tick();if(AC&&snOn)mix.gain.setTargetAtTime(.7,AC.currentTime,.1)}}
+$('#t1').onclick=function(){tab(1)};$('#t2').onclick=function(){tab(2)};window.addEventListener('resize',function(){if(document.body.classList.contains('eqm'))rs()});
+upd();requestAnimationFrame(frame);
+$('#fs').onclick=function(){var on=document.body.classList.toggle('fs');this.textContent=on?'✕ Шығу':'⛶ Толық экран';try{var r;if(on){r=document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();r&&r.catch&&r.catch(function(){});if(screen.orientation&&screen.orientation.lock){r=screen.orientation.lock('landscape');r&&r.catch&&r.catch(function(){})}}else{if(document.fullscreenElement)document.exitFullscreen();if(screen.orientation&&screen.orientation.unlock)screen.orientation.unlock()}}catch(e){}};
+show(0);tick();
+</script></body></html>
